@@ -1,6 +1,6 @@
 ---
-- hosts: localhost
-  become: true
+- hosts: all
+  # become: true
 
   tasks:
     - name: install nvm
