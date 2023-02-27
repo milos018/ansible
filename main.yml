@@ -1,8 +1,28 @@
----
-- hosts: all
-  # become: true
+- name: Install NVM
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+  args:
+    creates: "/root/.nvm/nvm.sh"
 
-  tasks:
-    - name: install nvm
-      apt:
-        shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+- name: Install Node Versions
+  shell: ". /root/.bashrc && nvm install {{item}}"
+  with_items:
+    - "v10.24.1"
+    - "v16.17.0"
+    - "--lts"
+    - "node"
+# - nvm
+# - bash
+#   - aliases
+#   - NPM tokens
+# - ssh keys
+# - git/git-lfs/gh cli
+
+# - VS Code
+# - vim/neovim
+# - vpn 2x
+
+# - Chrome
+#   - MD
+#   - TalentsConnect
+#   - FreshFx
